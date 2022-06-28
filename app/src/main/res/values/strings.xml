@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Sowingo</string>
+    <string name="products">Products</string>
+    <string name="no_products"> Products Not Found...</string>
+    <string name="searchbar_hint">Search Product Name, Sku, Keyword</string>
+
+    <string name="all">All</string>
+    <string name="favorite">Favorite</string>
+    <string name="unfavorite">Default</string>
+
+</resources>

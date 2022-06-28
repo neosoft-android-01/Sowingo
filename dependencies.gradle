@@ -1,0 +1,45 @@
+ext.versions = [
+
+        hilt            : '2.38.1',
+
+        ktxCore         : '1.8.0',
+        composeVersion  : '1.1.1',
+        lifecycleKtx    : '2.4.1',
+        composeActivity : '1.4.0',
+        composeViewModel: '2.4.1',
+        swipeRefresh    : '0.24.12-rc',
+        coilImageLoading: '2.0.0',
+
+        retrofit2       : '2.9.0',
+        okhttp3         : '4.9.0',
+        logging         : '4.4.0',
+]
+
+ext.gradlePlugins = [
+        hilt: "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt"
+]
+
+ext.libraries = [
+        ktxCore                : "androidx.core:core-ktx:$versions.ktxCore",
+
+        composeUi              : "androidx.compose.ui:ui:$versions.composeVersion",
+        material               : "androidx.compose.material:material:$versions.composeVersion",
+        tooling                : "androidx.compose.ui:ui-tooling:$versions.composeVersion",
+        composePreview         : "androidx.compose.ui:ui-tooling-preview:$versions.composeVersion",
+        composeFoundation      : "androidx.compose.foundation:foundation:$versions.composeVersion",
+        composeLivedata        : "androidx.compose.runtime:runtime-livedata:$versions.composeVersion",
+        composeViewModel       : "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.composeViewModel",
+        swipeRefresh           : "com.google.accompanist:accompanist-swiperefresh:$versions.swipeRefresh",
+        coilImageLoading       : "io.coil-kt:coil-compose:$versions.coilImageLoading",
+
+        lifecycleKtx           : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycleKtx",
+        composeActivity        : "androidx.activity:activity-compose:$versions.composeActivity",
+
+        hiltAndroid            : "com.google.dagger:hilt-android:$versions.hilt",
+        hiltCompiler           : "com.google.dagger:hilt-compiler:$versions.hilt",
+
+        retrofit2              : "com.squareup.retrofit2:retrofit:$versions.retrofit2",
+        retrofit2GsonConnverter: "com.squareup.retrofit2:converter-gson:$versions.retrofit2",
+        okhttp3                : "com.squareup.okhttp3:okhttp:$versions.okhttp3",
+        logging                : "com.squareup.okhttp3:logging-interceptor:$versions.logging",
+]
