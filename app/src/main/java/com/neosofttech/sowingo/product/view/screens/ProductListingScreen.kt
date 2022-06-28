@@ -17,6 +17,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -82,11 +84,19 @@ private fun ProductItem(
     isFavourite: Boolean,
     onToggleFavorites: (id: String) -> Unit
 ) {
-    Row(
-        modifier = Modifier.padding(dp_16, dp_16, dp_16, dp_8)
+    ConstraintLayout(
+        modifier = Modifier
+            .padding(dp_16, dp_16, dp_16, dp_8)
+            .fillMaxWidth()
     ) {
-
-        Box(modifier = Modifier.padding(dp_8, dp_8, dp_0, dp_0)) {
+        val (box, text, price_1, price_2) = createRefs()
+        Box(modifier = Modifier
+            .padding(dp_8, dp_8, dp_0, dp_0)
+            .constrainAs(box) {
+                top.linkTo(parent.top)
+                bottom.linkTo(parent.bottom)
+                start.linkTo(parent.start)
+            }) {
             ImageLoader(url = product.mainImage)
             FavoriteToggle(
                 productId = product.id,
@@ -95,34 +105,44 @@ private fun ProductItem(
             )
         }
 
-        Column {
-            Text(
-                text = product.name ?: "",
-                maxLines = 5,
-                overflow = TextOverflow.Ellipsis,
-                style = description,
-                modifier = Modifier.padding(dp_12, dp_0, dp_0, dp_0),
-            )
-            Box() {
-                Row (
-                    horizontalArrangement = Arrangement.End,
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.Bottom
-                ) {
-                    Text(
-                        text = "$${product.vendorInventory.first().listPrice}",
-                        style = price1,
-                        modifier = Modifier.padding(dp_0, dp_12, dp_0, dp_0)
-                    )
-                    Text(
-                        text = "$${product.vendorInventory.first().price}",
-                        style = price2,
-                        modifier = Modifier.padding(dp_8, dp_16, dp_0, dp_0),
-                        textDecoration = TextDecoration.LineThrough,
-                    )
+        Text(
+            text = product.name ?: "",
+            maxLines = 5,
+            overflow = TextOverflow.Ellipsis,
+            style = description,
+            modifier = Modifier
+                .padding(dp_12, dp_0, dp_0, dp_0)
+                .constrainAs(text) {
+                    top.linkTo(parent.top)
+                    start.linkTo(box.end)
+                    end.linkTo(parent.end)
+                    bottom.linkTo(price_1.top)
+                    height = Dimension.fillToConstraints
+                    width = Dimension.fillToConstraints
                 }
-            }
+        )
 
-        }
+        Text(
+            text = "$${product.vendorInventory.first().listPrice}",
+            style = price1,
+            modifier = Modifier
+                .padding(dp_0, dp_12, dp_0, dp_0)
+                .constrainAs(price_1) {
+                    bottom.linkTo(parent.bottom)
+                    end.linkTo(price_2.start)
+                },
+        )
+        Text(
+            text = "$${product.vendorInventory.first().price}",
+            style = price2,
+            modifier = Modifier
+                .padding(dp_8, dp_16, dp_0, dp_0)
+                .constrainAs(price_2) {
+                    bottom.linkTo(price_1.bottom)
+                    end.linkTo(parent.end)
+                    top.linkTo(price_1.top)
+                },
+            textDecoration = TextDecoration.LineThrough,
+        )
     }
 }

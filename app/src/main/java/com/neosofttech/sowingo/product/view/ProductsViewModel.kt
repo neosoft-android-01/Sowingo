@@ -45,7 +45,7 @@ class ProductsViewModel @Inject constructor(
         loadProducts()
     }
 
-    private fun loadProducts() {
+    fun loadProducts() {
 
         viewModelState.update { it.copy(isLoading = true) }
 

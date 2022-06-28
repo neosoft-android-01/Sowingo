@@ -9,10 +9,18 @@ ext.versions = [
         composeViewModel: '2.4.1',
         swipeRefresh    : '0.24.12-rc',
         coilImageLoading: '2.0.0',
+        constaintLayout : '1.1.0-alpha03',
 
+        coroutineVersion: '1.5.1',
         retrofit2       : '2.9.0',
         okhttp3         : '4.9.0',
         logging         : '4.4.0',
+
+        junit           : '4.13.2',
+        mockito         : '3.8.0',
+        mockitoKotlin   : '3.2.0',
+        mockk           : '1.12.0',
+        coroutineTest   : '1.4.3',
 ]
 
 ext.gradlePlugins = [
@@ -31,6 +39,7 @@ ext.libraries = [
         composeViewModel       : "androidx.lifecycle:lifecycle-viewmodel-compose:$versions.composeViewModel",
         swipeRefresh           : "com.google.accompanist:accompanist-swiperefresh:$versions.swipeRefresh",
         coilImageLoading       : "io.coil-kt:coil-compose:$versions.coilImageLoading",
+        constaintLayout        : "androidx.constraintlayout:constraintlayout-compose:$versions.constaintLayout",
 
         lifecycleKtx           : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycleKtx",
         composeActivity        : "androidx.activity:activity-compose:$versions.composeActivity",
@@ -42,4 +51,19 @@ ext.libraries = [
         retrofit2GsonConnverter: "com.squareup.retrofit2:converter-gson:$versions.retrofit2",
         okhttp3                : "com.squareup.okhttp3:okhttp:$versions.okhttp3",
         logging                : "com.squareup.okhttp3:logging-interceptor:$versions.logging",
+
+        coroutineCore          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutineVersion",
+        coroutineCoreJVM       : "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$versions.coroutineVersion",
+        coroutineAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutineVersion",
+
+        /// test dependencies
+        jUnit                  : "junit:junit:$versions.junit",
+        mockito                : "org.mockito:mockito-core:$versions.mockito",
+        mockitoKotlin          : "org.mockito.kotlin:mockito-kotlin:$versions.mockitoKotlin",
+        mockk                  : "io.mockk:mockk:$versions.mockk",
+
+        composeUiJunit         : "androidx.compose.ui:ui-test-junit4:$versions.composeVersion",
+        coroutineTest          : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutineTest",
+        hiltTest               : "com.google.dagger:hilt-android-testing:$versions.hilt",
+
 ]
